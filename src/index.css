@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 60% 18%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 25% 93%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 174 62% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 174 62% 42%;
+
+    --radius: 0.75rem;
+
+    --chart-1: 174 62% 42%;
+    --chart-2: 222 60% 18%;
+    --chart-3: 262 52% 55%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 72% 51%;
+
+    --success: 152 60% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 80% 52%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 222 60% 14%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 50% 22%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 222 40% 24%;
+    --sidebar-ring: 174 62% 42%;
+
+    --glass: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 174 62% 50%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 222 30% 16%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 25% 14%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 174 62% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 25% 18%;
+    --input: 222 25% 18%;
+    --ring: 174 62% 42%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 220 20% 80%;
+    --sidebar-primary: 174 62% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 14%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 222 30% 16%;
+    --sidebar-ring: 174 62% 42%;
+
+    --glass: 222 40% 12% / 0.7;
+    --glass-border: 0 0% 100% / 0.08;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(222 60% 18%), hsl(222 60% 28%));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(174 62% 42%), hsl(174 62% 55%));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(222 60% 14%), hsl(222 60% 22%), hsl(174 40% 25%));
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(174 62% 42%), hsl(174 62% 55%));
+  }
+
+  .slot-theory { @apply bg-blue-500/15 border-blue-500/30 text-blue-700; }
+  .slot-lab { @apply bg-emerald-500/15 border-emerald-500/30 text-emerald-700; }
+  .slot-project { @apply bg-amber-500/15 border-amber-500/30 text-amber-700; }
+  .slot-break { @apply bg-muted border-border text-muted-foreground; }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Show only the timetable area and its contents */
+  .print\:block,
+  .print\:block *,
+  .bg-white.rounded-xl.shadow-sm.border *,
+  .bg-white.rounded-xl.shadow-sm.border {
+    visibility: visible;
+  }
+  
+  /* Position the timetable at the top of the PDF page */
+  .bg-white.rounded-xl.shadow-sm.border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Force background colors to print (for subject colors) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@media print {
+  /* Hide absolutely everything by default */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Make ONLY the timetable and the hidden header visible */
+  .print-container,
+  .print-container * {
+    visibility: visible;
+  }
+  
+  /* Show the hidden college header just for the PDF */
+  .print\:block {
+    display: block !important;
+  }
+
+  /* Position the timetable perfectly at the top left of the A4 paper */
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Force background colors to print so your subjects stay color-coded */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
