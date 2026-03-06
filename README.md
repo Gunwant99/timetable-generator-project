@@ -30,3 +30,5 @@ pip install flask flask-sqlalchemy flask-cors psycopg2-binary
 
 # Start the development server
 python app.py
+
+----
